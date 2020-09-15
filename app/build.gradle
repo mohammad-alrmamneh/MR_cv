@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.futureapp.mr_cv"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+repositories {
+    mavenCentral()
+    google()
+
+    maven { url 'https://jitpack.io' }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    def lifecycle_version = "2.1.0"
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    implementation 'com.github.ybq:Android-SpinKit:1.2.0'
+    implementation 'com.google.code.gson:gson:2.7'
+    implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'com.dinuscxj:ellipsizetextview:1.0.5'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
+
+    api 'io.jsonwebtoken:jjwt-api:0.11.1'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.1'
+    runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.11.1') {
+        exclude group: 'org.json', module: 'json' //provided by Android natively
+    }
+
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#514A9D</color>
+    <color name="colorPrimaryDark">#514A9D</color>
+    <color name="colorAccent">#24C6DC</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="transparent1">#10000000</color>
+    <color name="transparent2">#20000000</color>
+    <color name="transparent3">#30000000</color>
+    <color name="transparent4">#40000000</color>
+    <color name="transparent5">#50000000</color>
+    <color name="transparent6">#60000000</color>
+    <color name="transparent7">#60000000</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="green">#008000</color>
+    <color name="gray">#808080</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="orange">#FFA500</color>
+    <color name="red">#FF0000</color>
+    <color name="brown">#A52A2A</color>
+    <color name="blue">#0000FF</color>
+
+    <color name="main_app_color_1">#24C6DC</color>
+    <color name="main_app_color_2">#514A9D</color>
+</resources>

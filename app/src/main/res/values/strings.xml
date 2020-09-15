@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Mohammad Alrmamneh C.V</string>
+
+    <string name="projects">Projects</string>
+    <string name="experience">Experience</string>
+    <string name="company">Company</string>
+    <string name="years">Years</string>
+    <string name="applications">Applications</string>
+    <string name="technologies">Technologies</string>
+    <string name="contactInfo">Contact Info</string>
+    <string name="clickAgainToExit">Please click BACK again to exit</string>
+</resources>
