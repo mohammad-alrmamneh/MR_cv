@@ -1,32 +1,36 @@
 package com.futureapp.mr_cv.activities;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.futureapp.mr_cv.R;
+import com.futureapp.mr_cv.adapters.DrawerAdapter;
 import com.futureapp.mr_cv.adapters.FmMainPagerAdapter;
-import com.futureapp.mr_cv.adapters.ListViewDrawerAdapter;
-import com.futureapp.mr_cv.models.DrawerItemsModel;
+import com.futureapp.mr_cv.drawerContents.DrawerItem;
+import com.futureapp.mr_cv.drawerContents.SimpleItem;
+import com.futureapp.mr_cv.drawerContents.SpaceItem;
 import com.futureapp.mr_cv.util.Global;
+import com.yarolegovich.slidingrootnav.SlidingRootNav;
+import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,12 +38,8 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
 
-    @BindView(R.id.menu_Btn)
-    Button menuBtn;
-    @BindView(R.id.export_PDF_Btn)
-    Button exportPDFBtn;
     @BindView(R.id.profilePic_CIV)
     CircleImageView profilePicCIV;
     @BindView(R.id.profilePic_Fl)
@@ -64,14 +64,23 @@ public class MainActivity extends AppCompatActivity {
     PagerSlidingTabStrip tabs;
     @BindView(R.id.viewPager)
     ViewPager viewPager;
-    @BindView(R.id.left_drawer)
-    ListView leftDrawer;
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-
-    private ListViewDrawerAdapter listViewDrawerAdapter;
 
     boolean doubleBackToExitPressedOnce = false;
+
+    private static final int POS_DASHBOARD = 0;
+    private static final int POS_ACCOUNT = 1;
+    private static final int POS_MESSAGES = 2;
+    private static final int POS_CART = 3;
+    private static final int POS_LOGOUT = 5;
+    @BindView(R.id.menu_Btn)
+    Button menuBtn;
+    @BindView(R.id.export_PDF_Btn)
+    Button exportPDFBtn;
+
+    private String[] screenTitles;
+    private Drawable[] screenIcons;
+
+    private SlidingRootNav slidingRootNav;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -85,13 +94,86 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setViewPager();
+
+        initialDrawer(savedInstanceState);
+    }
+
+    private void initialDrawer(Bundle savedInstanceState) {
+
+        slidingRootNav = new SlidingRootNavBuilder(this)
+                .withMenuOpened(false)
+                .withContentClickableWhenMenuOpened(true)
+                .withSavedState(savedInstanceState)
+                .withMenuLayout(R.layout.menu_left_drawer)
+                .inject();
+
+        screenIcons = loadScreenIcons();
+        screenTitles = loadScreenTitles();
+
+        DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
+                createItemFor(POS_DASHBOARD).setChecked(true),
+                createItemFor(POS_ACCOUNT),
+                createItemFor(POS_MESSAGES),
+                createItemFor(POS_CART),
+                new SpaceItem(48),
+                createItemFor(POS_LOGOUT)));
+        adapter.setListener(this);
+
+        RecyclerView list = findViewById(R.id.list);
+        list.setNestedScrollingEnabled(false);
+        list.setLayoutManager(new LinearLayoutManager(this));
+        list.setAdapter(adapter);
+
+        adapter.setSelected(POS_DASHBOARD);
+    }
+
+    @Override
+    public void onItemSelected(int position) {
+
+        slidingRootNav.closeMenu();
+
+//        if (position == POS_LOGOUT) {
+//
+//        }
+
+    }
+
+    @SuppressWarnings("rawtypes")
+    private DrawerItem createItemFor(int position) {
+        return new SimpleItem(screenIcons[position], screenTitles[position])
+                .withIconTint(color(R.color.black))
+                .withTextTint(color(R.color.black))
+                .withSelectedIconTint(color(R.color.main_app_color_2))
+                .withSelectedTextTint(color(R.color.main_app_color_2));
+    }
+
+    private String[] loadScreenTitles() {
+        return getResources().getStringArray(R.array.ld_activityScreenTitles);
+    }
+
+    private Drawable[] loadScreenIcons() {
+        TypedArray ta = getResources().obtainTypedArray(R.array.ld_activityScreenIcons);
+        Drawable[] icons = new Drawable[ta.length()];
+        for (int i = 0; i < ta.length(); i++) {
+            int id = ta.getResourceId(i, 0);
+            if (id != 0) {
+                icons[i] = ContextCompat.getDrawable(this, id);
+            }
+        }
+        ta.recycle();
+        return icons;
+    }
+
+    @ColorInt
+    private int color(@ColorRes int res) {
+        return ContextCompat.getColor(this, res);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        setDrawer();
+//        setDrawer();
 
     }
 
@@ -99,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(new FmMainPagerAdapter(getSupportFragmentManager(), this));
         tabs.setShouldExpand(true);
         tabs.setAllCaps(false);
-//        tabs.setTextColor(getResources().getColor(R.color.black));
         tabs.setIndicatorColor(getResources().getColor(R.color.main_app_color_2));
         tabs.setDividerColor(getResources().getColor(R.color.transparent));
         tabs.setUnderlineColor(getResources().getColor(R.color.black));
@@ -115,108 +196,112 @@ public class MainActivity extends AppCompatActivity {
         nameTv.setTypeface(face, Typeface.BOLD);
     }
 
-    private void setDrawer() {
-
-        String[] titles = {getResources().getString(R.string.applications),
-                getResources().getString(R.string.applications),
-                getResources().getString(R.string.applications),
-                getResources().getString(R.string.applications),
-                getResources().getString(R.string.applications),
-                getResources().getString(R.string.applications)};
-
-        int[] icons = {R.drawable.menu_icon,
-                R.drawable.menu_icon,
-                R.drawable.menu_icon,
-                R.drawable.menu_icon,
-                R.drawable.menu_icon,
-                R.drawable.menu_icon};
-
-        ArrayList<DrawerItemsModel> drawerListArray = new ArrayList<>();
-
-        for (int i = 0; i < titles.length; i++) {
-
-            DrawerItemsModel drawerItemsModel = new DrawerItemsModel();
-            drawerItemsModel.setDrawerText(titles[i]);
-            drawerItemsModel.setDrawerIcon(icons[i]);
-
-            drawerListArray.add(drawerItemsModel);
-        }
-
-        listViewDrawerAdapter = new ListViewDrawerAdapter(this, drawerListArray);
-
-        if (leftDrawer.getHeaderViewsCount() > 0) {
-
-        } else {
-            LayoutInflater inflater = getLayoutInflater();
-            ViewGroup header = (ViewGroup) inflater.inflate(R.layout.drawer_header, leftDrawer, false);
-            leftDrawer.addHeaderView(header);
-
-//            LayoutInflater inflaterFooter = getLayoutInflater();
-//            ViewGroup footer = (ViewGroup) inflaterFooter.inflate(R.layout.drawer_footer, leftDrawer, false);
-//            leftDrawer.addFooterView(footer);
-        }
-
-        leftDrawer.setAdapter(listViewDrawerAdapter);
-
-        leftDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
-
-
-//                if (position == 0) {
+//    private void setDrawer() {
 //
-//                    //drawer header
+//        String[] titles = {getResources().getString(R.string.applications),
+//                getResources().getString(R.string.applications),
+//                getResources().getString(R.string.applications),
+//                getResources().getString(R.string.applications),
+//                getResources().getString(R.string.applications),
+//                getResources().getString(R.string.applications)};
 //
-//                } else if (position == 1) {
+//        int[] icons = {R.drawable.menu_icon,
+//                R.drawable.menu_icon,
+//                R.drawable.menu_icon,
+//                R.drawable.menu_icon,
+//                R.drawable.menu_icon,
+//                R.drawable.menu_icon};
 //
-//                    Intent i = new Intent(MainScreenDriversActivity.this, MyAccountActivity.class);
-//                    startActivity(i);
-//                    overridePendingTransition(R.anim.enter, R.anim.exit);
+//        ArrayList<DrawerItemsModel> drawerListArray = new ArrayList<>();
 //
-//                } else if (position == 2) {
+//        for (int i = 0; i < titles.length; i++) {
 //
-//                    Intent i = new Intent(MainScreenDriversActivity.this, TermsConditionsActivity.class);
-//                    startActivity(i);
-//                    overridePendingTransition(R.anim.enter, R.anim.exit);
+//            DrawerItemsModel drawerItemsModel = new DrawerItemsModel();
+//            drawerItemsModel.setDrawerText(titles[i]);
+//            drawerItemsModel.setDrawerIcon(icons[i]);
 //
-//                } else if (position == 3) {
+//            drawerListArray.add(drawerItemsModel);
+//        }
 //
-//                    Intent i = new Intent(MainScreenDriversActivity.this, PrivacyPolicyActivity.class);
-//                    startActivity(i);
-//                    overridePendingTransition(R.anim.enter, R.anim.exit);
+//        listViewDrawerAdapter = new ListViewDrawerAdapter(this, drawerListArray);
 //
-//                } else if (position == 4) {
+//        if (leftDrawer.getHeaderViewsCount() > 0) {
 //
-//                    Intent i = new Intent(MainScreenDriversActivity.this, ContactUsActivity.class);
-//                    startActivity(i);
-//                    overridePendingTransition(R.anim.enter, R.anim.exit);
+//        } else {
+//            LayoutInflater inflater = getLayoutInflater();
+//            ViewGroup header = (ViewGroup) inflater.inflate(R.layout.drawer_header, leftDrawer, false);
+//            leftDrawer.addHeaderView(header);
 //
-//                } else if (position == 5) {
+////            LayoutInflater inflaterFooter = getLayoutInflater();
+////            ViewGroup footer = (ViewGroup) inflaterFooter.inflate(R.layout.drawer_footer, leftDrawer, false);
+////            leftDrawer.addFooterView(footer);
+//        }
 //
-//                    Intent i = new Intent(MainScreenDriversActivity.this, ChooseAppLanguageInnerActivity.class);
-//                    startActivity(i);
-//                    overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
+//        leftDrawer.setAdapter(listViewDrawerAdapter);
 //
-//                } else if (position == 6) {
+//        leftDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //
-//                    Intent i = new Intent(MainScreenDriversActivity.this, LogoutActivity.class);
-//                    startActivity(i);
-//                    overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
-//
+//                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+//                    drawerLayout.closeDrawer(GravityCompat.START);
 //                }
-            }
-        });
-
-    }
+//
+//
+////                if (position == 0) {
+////
+////                    //drawer header
+////
+////                } else if (position == 1) {
+////
+////                    Intent i = new Intent(MainScreenDriversActivity.this, MyAccountActivity.class);
+////                    startActivity(i);
+////                    overridePendingTransition(R.anim.enter, R.anim.exit);
+////
+////                } else if (position == 2) {
+////
+////                    Intent i = new Intent(MainScreenDriversActivity.this, TermsConditionsActivity.class);
+////                    startActivity(i);
+////                    overridePendingTransition(R.anim.enter, R.anim.exit);
+////
+////                } else if (position == 3) {
+////
+////                    Intent i = new Intent(MainScreenDriversActivity.this, PrivacyPolicyActivity.class);
+////                    startActivity(i);
+////                    overridePendingTransition(R.anim.enter, R.anim.exit);
+////
+////                } else if (position == 4) {
+////
+////                    Intent i = new Intent(MainScreenDriversActivity.this, ContactUsActivity.class);
+////                    startActivity(i);
+////                    overridePendingTransition(R.anim.enter, R.anim.exit);
+////
+////                } else if (position == 5) {
+////
+////                    Intent i = new Intent(MainScreenDriversActivity.this, ChooseAppLanguageInnerActivity.class);
+////                    startActivity(i);
+////                    overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
+////
+////                } else if (position == 6) {
+////
+////                    Intent i = new Intent(MainScreenDriversActivity.this, LogoutActivity.class);
+////                    startActivity(i);
+////                    overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
+////
+////                }
+//            }
+//        });
+//
+//    }
 
     @OnClick(R.id.menu_Btn)
     public void onMenuBtnClicked() {
 
-        drawerLayout.openDrawer(GravityCompat.START);
+        if (slidingRootNav.isMenuClosed()) {
+            slidingRootNav.openMenu();
+        } else if (slidingRootNav.isMenuOpened()) {
+            slidingRootNav.closeMenu();
+        }
     }
 
     @OnClick(R.id.export_PDF_Btn)
@@ -241,8 +326,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
+        if (slidingRootNav.isMenuOpened()) {
+            slidingRootNav.closeMenu();
         } else {
 
             if (doubleBackToExitPressedOnce) {
