@@ -3,14 +3,17 @@
 
     <string-array name="ld_activityScreenTitles">
         <item>Dashboard</item>
-        <item>My Account</item>
-        <item>Messages</item>
-        <item>Cart</item>
+        <item>Personal Info</item>
+        <item>Purpose</item>
+        <item>Education</item>
+        <item>Skills</item>
         <item />
-        <item>Log Out</item>
+        <item>Exit</item>
+
     </string-array>
 
     <array name="ld_activityScreenIcons">
+        <item>@drawable/menu_icon</item>
         <item>@drawable/menu_icon</item>
         <item>@drawable/menu_icon</item>
         <item>@drawable/menu_icon</item>

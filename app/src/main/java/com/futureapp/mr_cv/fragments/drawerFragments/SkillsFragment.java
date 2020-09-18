@@ -1,4 +1,4 @@
-package com.futureapp.mr_cv.fragments;
+package com.futureapp.mr_cv.fragments.drawerFragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,17 +11,14 @@ import androidx.fragment.app.Fragment;
 import butterknife.ButterKnife;
 
 
-public class ApplicationsFragment extends Fragment {
+public class SkillsFragment extends Fragment {
 
     public static final String ARG_PAGE = "ARG_PAGE";
 
-    private int mPage;
-
-
-    public static ApplicationsFragment newInstance(int page) {
+    public static SkillsFragment newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
-        ApplicationsFragment fragment = new ApplicationsFragment();
+        SkillsFragment fragment = new SkillsFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -29,15 +26,14 @@ public class ApplicationsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPage = getArguments().getInt(ARG_PAGE);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_applications, container, false);
+        View view = inflater.inflate(R.layout.fragment_skills, container, false);
         ButterKnife.bind(this, view);
-
 
         return view;
     }
+
 }

@@ -3,9 +3,9 @@ package com.futureapp.mr_cv.adapters;
 import android.content.Context;
 
 import com.futureapp.mr_cv.R;
-import com.futureapp.mr_cv.fragments.ApplicationsFragment;
-import com.futureapp.mr_cv.fragments.ContactInfoFragment;
-import com.futureapp.mr_cv.fragments.TechnologiesFragment;
+import com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap.ApplicationsFragment;
+import com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap.ContactInfoFragment;
+import com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap.TechnologiesFragment;
 import com.futureapp.mr_cv.util.TinyDB;
 
 import androidx.fragment.app.Fragment;

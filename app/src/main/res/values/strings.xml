@@ -8,6 +8,12 @@
     <string name="applications">Applications</string>
     <string name="technologies">Technologies</string>
     <string name="contactInfo">Contact Info</string>
+    <string name="personalInfo">Personal Info</string>
+    <string name="purpose">Purpose</string>
+    <string name="education">Education</string>
+    <string name="skills">Skills</string>
+    <string name="exit">Exit</string>
     <string name="clickAgainToExit">Please click BACK again to exit</string>
     <string name="cv">C.V</string>
+
 </resources>
