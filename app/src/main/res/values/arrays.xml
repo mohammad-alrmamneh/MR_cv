@@ -2,24 +2,24 @@
 <resources>
 
     <string-array name="ld_activityScreenTitles">
-        <item>Dashboard</item>
-        <item>Personal Info</item>
-        <item>Purpose</item>
-        <item>Education</item>
-        <item>Skills</item>
+        <item>@string/dashboard</item>
+        <item>@string/personalInfo</item>
+        <item>@string/purpose</item>
+        <item>@string/education</item>
+        <item>@string/skills</item>
         <item />
-        <item>Exit</item>
+        <item>@string/exit</item>
 
     </string-array>
 
     <array name="ld_activityScreenIcons">
-        <item>@drawable/menu_icon</item>
-        <item>@drawable/menu_icon</item>
-        <item>@drawable/menu_icon</item>
-        <item>@drawable/menu_icon</item>
-        <item>@drawable/menu_icon</item>
+        <item>@drawable/dashboard_icon</item>
+        <item>@drawable/personal_info_icon</item>
+        <item>@drawable/purpose_icon</item>
+        <item>@drawable/education_icon</item>
+        <item>@drawable/skills_icon</item>
         <item>0</item>
-        <item>@drawable/menu_icon</item>
+        <item>@drawable/exit_icon</item>
     </array>
 
 </resources>
