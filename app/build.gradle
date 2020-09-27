@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'  // Google Services plugin
+
 
 android {
     compileSdkVersion 29
@@ -73,4 +75,16 @@ dependencies {
         exclude group: 'org.json', module: 'json' //provided by Android natively
     }
 
+    // Add the dependency for the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+
+    // Add the dependencies for any other desired Firebase products
+    // For example, to use Firebase Authentication and Cloud Firestore
+    implementation 'com.google.firebase:firebase-auth:19.3.2'
+    implementation 'com.google.firebase:firebase-firestore:21.6.0'
+
+    implementation 'com.google.firebase:firebase-config:19.2.0'
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
 }

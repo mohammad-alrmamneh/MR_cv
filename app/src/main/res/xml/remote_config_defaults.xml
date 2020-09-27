@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?><!-- START xml_defaults -->
+<defaultsMap>
+    <entry>
+        <key>personal_info</key>
+        <value>null</value>
+    </entry>
+    <entry>
+        <key>skills</key>
+        <value>null</value>
+    </entry>
+    <entry>
+        <key>education</key>
+        <value>null</value>
+    </entry>
+    <entry>
+        <key>purpose</key>
+        <value>null</value>
+    </entry>
+    <entry>
+        <key>companies</key>
+        <value>null</value>
+    </entry>
+    <entry>
+        <key>experience</key>
+        <value>null</value>
+    </entry>
+    <entry>
+        <key>projects</key>
+        <value>null</value>
+    </entry>
+
+</defaultsMap><!-- END xml_defaults -->

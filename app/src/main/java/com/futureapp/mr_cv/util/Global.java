@@ -55,10 +55,6 @@ import io.github.inflationx.viewpump.ViewPump;
 
 public class Global {
 
-    //TODO this variable just for testing
-    public static int shipmentsItemsClicked = -1;
-
-
     public static ProgressDialog progressBar;
 
     public static boolean isNetworkAvailable(Context ctx) {
@@ -67,6 +63,26 @@ public class Global {
         NetworkInfo activeNetworkInfo = connectivityManager
                 .getActiveNetworkInfo();
         return activeNetworkInfo != null;
+    }
+
+    public static void progressLoading(Context context) {
+
+        if (progressBar != null && progressBar.isShowing()) {
+
+        } else {
+            progressBar = ProgressDialog.show(context, null, null, false, true);
+            progressBar.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            progressBar.setContentView(R.layout.progressbar_layout);
+            progressBar.setCancelable(false);
+        }
+
+    }
+
+    public static void dismissProgressLoading() {
+
+        if (progressBar != null) {
+            progressBar.dismiss();
+        }
     }
 
     public static void toast(Context context, String msg) {

@@ -16,5 +16,8 @@
     <string name="exit">Exit</string>
     <string name="clickAgainToExit">Please click BACK again to exit</string>
     <string name="cv">C.V</string>
+    <string name="validationInternetConnection">Please check internet connection!</string>
+    <string name="serverError">Server Error!</string>
+    <string name="refresh_here"><u>Refresh here</u></string>
 
 </resources>
