@@ -68,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:singleLine="true"
-                        android:text="12"
+                        android:text=""
                         android:textAllCaps="false"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14ssp" />
@@ -104,7 +104,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:singleLine="true"
-                            android:text="6"
+                            android:text=""
                             android:textAllCaps="false"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_14ssp" />
@@ -147,7 +147,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:singleLine="true"
-                        android:text="4"
+                        android:text=""
                         android:textAllCaps="false"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14ssp" />
@@ -177,7 +177,7 @@
             android:paddingLeft="@dimen/_15sdp"
             android:paddingRight="@dimen/_15sdp"
             android:singleLine="true"
-            android:text="Mohammad Alrmamneh"
+            android:text=""
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="@dimen/_16ssp"
@@ -192,7 +192,7 @@
             android:paddingLeft="@dimen/_15sdp"
             android:paddingRight="@dimen/_15sdp"
             android:singleLine="true"
-            android:text="Senior Android Developer"
+            android:text=""
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp" />

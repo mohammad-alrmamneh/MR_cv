@@ -34,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.futureapp.mr_cv.R;
+import com.futureapp.mr_cv.models.ConfigFirebaseModel;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormat;
@@ -56,6 +57,7 @@ import io.github.inflationx.viewpump.ViewPump;
 public class Global {
 
     public static ProgressDialog progressBar;
+    public static ConfigFirebaseModel configFirebaseModel;
 
     public static boolean isNetworkAvailable(Context ctx) {
         ConnectivityManager connectivityManager = (ConnectivityManager) ctx

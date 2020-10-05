@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/shape_box_for_main_screen"
+    android:padding="1px"
     android:orientation="vertical">
 
     <LinearLayout

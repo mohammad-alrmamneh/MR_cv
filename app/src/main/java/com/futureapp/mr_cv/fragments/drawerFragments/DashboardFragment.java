@@ -10,8 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.bumptech.glide.Glide;
 import com.futureapp.mr_cv.R;
 import com.futureapp.mr_cv.adapters.FmMainPagerAdapter;
+import com.futureapp.mr_cv.models.ConfigFirebaseModel;
+import com.futureapp.mr_cv.util.Global;
+import com.futureapp.mr_cv.util.TinyDB;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -71,6 +75,8 @@ public class DashboardFragment extends Fragment {
 
         setViewPager();
 
+        setData();
+
         return view;
     }
 
@@ -93,4 +99,22 @@ public class DashboardFragment extends Fragment {
         nameTv.setTypeface(face, Typeface.BOLD);
     }
 
+    private void setData() {
+        projectsTv.setText(Global.configFirebaseModel.getProjectsModel().size() + "");
+        experienceTv.setText(Global.configFirebaseModel.getExperience() + "");
+        companyTv.setText(Global.configFirebaseModel.getCompaniesModel().size() + "");
+        nameTv.setText(Global.configFirebaseModel.getPersonalInfoModel().getName() + "");
+        jobTitleTv.setText(Global.configFirebaseModel.getPersonalInfoModel().getJob_title() + "");
+
+        if (Global.configFirebaseModel.getPersonalInfoModel().getProfile_pic().length() > 0) {
+
+            Glide
+                    .with(getActivity())
+                    .load(Global.configFirebaseModel.getPersonalInfoModel().getProfile_pic())
+                    .placeholder(R.color.gray)
+                    .into(profilePicCIV);
+
+        }
+
+    }
 }

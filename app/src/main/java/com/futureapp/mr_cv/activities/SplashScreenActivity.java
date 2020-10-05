@@ -84,6 +84,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 if (configFirebaseModel != null) {
                     internetValidationLl.setVisibility(View.GONE);
                     tinydb.putObject(Constants.TinyDB_Keys.configFirebaseList, configFirebaseModel);
+                    Global.configFirebaseModel = configFirebaseModel;
                     delay();
                 } else {
                     internetValidationLl.setVisibility(View.VISIBLE);

@@ -337,6 +337,8 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
 
                     }
 
+                    projectsModels.add(projectsModel);
+
                 }
 
             }
