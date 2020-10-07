@@ -4,12 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/applications"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_30sdp" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

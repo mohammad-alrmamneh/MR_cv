@@ -112,6 +112,7 @@ public class DashboardFragment extends Fragment {
                     .with(getActivity())
                     .load(Global.configFirebaseModel.getPersonalInfoModel().getProfile_pic())
                     .placeholder(R.color.gray)
+                    .error(R.color.gray)
                     .into(profilePicCIV);
 
         }

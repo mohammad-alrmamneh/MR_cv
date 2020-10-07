@@ -303,12 +303,14 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
                     String project_name = jsonObjectTemp.getString("project_name");
                     String description = jsonObjectTemp.getString("description");
                     String playstore_link = jsonObjectTemp.getString("playstore_link");
+                    String app_icon = jsonObjectTemp.getString("app_icon");
 
                     ProjectsModel projectsModel = new ProjectsModel();
 
                     projectsModel.setProject_name(project_name);
                     projectsModel.setDescription(description);
                     projectsModel.setPlaystore_link(playstore_link);
+                    projectsModel.setApp_icon(app_icon);
 
 
                     JSONArray images = jsonObjectTemp.getJSONArray("images");

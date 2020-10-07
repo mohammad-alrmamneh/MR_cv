@@ -10,6 +10,7 @@ public class ProjectsModel implements Parcelable {
     String project_name;
     String description;
     String playstore_link;
+    String app_icon;
     ArrayList<ImagesOfProjectsModel> imagesOfProjectsModel;
 
     public ProjectsModel() {
@@ -20,6 +21,7 @@ public class ProjectsModel implements Parcelable {
         project_name = in.readString();
         description = in.readString();
         playstore_link = in.readString();
+        app_icon = in.readString();
         imagesOfProjectsModel = in.createTypedArrayList(ImagesOfProjectsModel.CREATOR);
     }
 
@@ -59,6 +61,14 @@ public class ProjectsModel implements Parcelable {
         this.playstore_link = playstore_link;
     }
 
+    public String getApp_icon() {
+        return app_icon;
+    }
+
+    public void setApp_icon(String app_icon) {
+        this.app_icon = app_icon;
+    }
+
     public ArrayList<ImagesOfProjectsModel> getImagesOfProjectsModel() {
         return imagesOfProjectsModel;
     }
@@ -77,6 +87,7 @@ public class ProjectsModel implements Parcelable {
         parcel.writeString(project_name);
         parcel.writeString(description);
         parcel.writeString(playstore_link);
+        parcel.writeString(app_icon);
         parcel.writeTypedList(imagesOfProjectsModel);
     }
 }

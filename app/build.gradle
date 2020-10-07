@@ -69,6 +69,7 @@ dependencies {
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
     implementation 'com.yarolegovich:sliding-root-nav:1.1.1'
+    implementation 'com.felipecsl.asymmetricgridview:library:2.0.1'
 
     api 'io.jsonwebtoken:jjwt-api:0.11.1'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.1'
