@@ -84,9 +84,9 @@ public class DashboardFragment extends Fragment {
         viewPager.setAdapter(new FmMainPagerAdapter(getFragmentManager(), getActivity()));
         tabs.setShouldExpand(true);
         tabs.setAllCaps(false);
-        tabs.setIndicatorColor(getResources().getColor(R.color.main_app_color_2));
+        tabs.setIndicatorColor(getResources().getColor(R.color.main_app_color_1));
         tabs.setDividerColor(getResources().getColor(R.color.transparent));
-        tabs.setUnderlineColor(getResources().getColor(R.color.black));
+        tabs.setUnderlineColor(getResources().getColor(R.color.white));
         tabs.setUnderlineHeight(1);
         setTextFonts();
         tabs.setViewPager(viewPager);

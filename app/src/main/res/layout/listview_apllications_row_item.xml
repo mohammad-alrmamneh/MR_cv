@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemRow_Fl"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/_200sdp"
+    android:background="@drawable/shape_bg_for_applications_item"
     android:orientation="vertical">
 
     <ImageView
@@ -18,12 +20,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:layout_gravity="center|bottom"
-        android:background="@color/transparent6"
-        android:gravity="center"
+        android:background="@color/transparent3"
+        android:gravity="center|left"
         android:maxLines="1"
         android:padding="@dimen/_3sdp"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="@dimen/_12ssp" />
+        android:textSize="@dimen/_11ssp" />
 
 </FrameLayout>
