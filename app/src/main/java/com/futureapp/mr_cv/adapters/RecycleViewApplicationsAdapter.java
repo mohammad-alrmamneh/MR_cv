@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterInside;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.futureapp.mr_cv.R;
 import com.futureapp.mr_cv.models.ProjectsModel;
 
@@ -74,6 +76,7 @@ public class RecycleViewApplicationsAdapter extends
             Glide
                     .with(context)
                     .load(projectsModels.get(position).getApp_icon())
+                    .transform(new CenterInside(), new RoundedCorners(15))
                     .placeholder(R.color.gray)
                     .error(R.color.gray)
                     .into(holder.image_Iv);

@@ -3,7 +3,6 @@
     android:id="@+id/itemRow_Fl"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_200sdp"
-    android:background="@drawable/shape_bg_for_applications_item"
     android:orientation="vertical">
 
     <ImageView
