@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterInside;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.futureapp.mr_cv.R;
 import com.futureapp.mr_cv.models.ProjectsModel;
 
@@ -71,12 +71,14 @@ public class RecycleViewApplicationsAdapter extends
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         ProjectsModel projectsModel = projectsModels.get(position);
-        if (projectsModels.get(position).getApp_icon().length() > 0) {
+        if (projectsModel.getApp_icon().length() > 0) {
+
+            int margin = context.getResources().getDimensionPixelSize(R.dimen._5sdp);
 
             Glide
                     .with(context)
-                    .load(projectsModels.get(position).getApp_icon())
-                    .transform(new CenterInside(), new RoundedCorners(15))
+                    .load(projectsModel.getApp_icon())
+                    .transform(new CenterInside(), new RoundedCorners(margin))
                     .placeholder(R.color.gray)
                     .error(R.color.gray)
                     .into(holder.image_Iv);
@@ -106,7 +108,7 @@ public class RecycleViewApplicationsAdapter extends
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.listview_apllications_row_item, parent, false);
+                .inflate(R.layout.listview_applications_row_item, parent, false);
         return new MyViewHolder(v);
     }
 }

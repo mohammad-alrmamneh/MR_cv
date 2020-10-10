@@ -153,10 +153,10 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     @SuppressWarnings("rawtypes")
     private DrawerItem createItemFor(int position) {
         return new SimpleItem(screenIcons[position], screenTitles[position])
-                .withIconTint(color(R.color.black))
-                .withTextTint(color(R.color.black))
-                .withSelectedIconTint(color(R.color.main_app_color_2))
-                .withSelectedTextTint(color(R.color.main_app_color_2));
+                .withIconTint(color(R.color.white))
+                .withTextTint(color(R.color.white))
+                .withSelectedIconTint(color(R.color.main_app_color_1))
+                .withSelectedTextTint(color(R.color.main_app_color_1));
     }
 
     private String[] loadScreenTitles() {
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     }
 
     private Drawable[] loadScreenIcons() {
-        TypedArray ta = getResources().obtainTypedArray(R.array.ld_activityScreenIcons);
+        TypedArray ta = getResources().obtainTypedArray(R.array.drawer_white_icons_array);
         Drawable[] icons = new Drawable[ta.length()];
         for (int i = 0; i < ta.length(); i++) {
             int id = ta.getResourceId(i, 0);
@@ -184,8 +184,6 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     @Override
     protected void onResume() {
         super.onResume();
-
-//        setDrawer();
 
     }
 

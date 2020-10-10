@@ -12,7 +12,7 @@
 
     </string-array>
 
-    <array name="ld_activityScreenIcons">
+    <array name="drawer_icons_array">
         <item>@drawable/dashboard_icon</item>
         <item>@drawable/personal_info_icon</item>
         <item>@drawable/purpose_icon</item>
@@ -20,6 +20,16 @@
         <item>@drawable/skills_icon</item>
         <item>0</item>
         <item>@drawable/exit_icon</item>
+    </array>
+
+    <array name="drawer_white_icons_array">
+        <item>@drawable/dashboard_white_icon</item>
+        <item>@drawable/personal_info_white_icon</item>
+        <item>@drawable/purpose_white_icon</item>
+        <item>@drawable/education_white_icon</item>
+        <item>@drawable/skills_white_icon</item>
+        <item>0</item>
+        <item>@drawable/exit_white_icon</item>
     </array>
 
 </resources>

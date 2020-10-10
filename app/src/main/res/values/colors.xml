@@ -27,4 +27,6 @@
 
     <color name="main_app_color_1">#24C6DC</color>
     <color name="main_app_color_2">#514A9D</color>
+    <color name="main_app_black">#000000</color>
+
 </resources>

@@ -16,6 +16,6 @@
         android:layout_margin="@dimen/_10sdp"
         android:text=""
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/main_app_black"
         android:textSize="@dimen/_12ssp" />
 </LinearLayout>
