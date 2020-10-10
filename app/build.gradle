@@ -70,6 +70,15 @@ dependencies {
     implementation 'io.github.inflationx:viewpump:2.0.3'
     implementation 'com.yarolegovich:sliding-root-nav:1.1.1'
     implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation 'com.github.elevenetc:textsurface:0.9.1'
+
+    def htextview_version = "0.1.6"
+// as 3.0 use implementation
+    implementation "com.hanks:htextview-base:$htextview_version"        // base library
+
+    implementation "com.hanks:htextview-typer:$htextview_version"       // optional
+    implementation "com.hanks:htextview-evaporate:$htextview_version"  // optional
+
 
     api 'io.jsonwebtoken:jjwt-api:0.11.1'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.1'
