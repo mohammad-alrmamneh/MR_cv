@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.futureapp.mr_cv.R;
 import com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap.ApplicationsFragment;
-import com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap.ContactInfoFragment;
 import com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap.TechnologiesFragment;
+import com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap.SkillsFragment;
 import com.futureapp.mr_cv.util.TinyDB;
 
 import androidx.fragment.app.Fragment;
@@ -30,7 +30,7 @@ public class FmMainPagerAdapter extends FragmentStatePagerAdapter {
         tabTitles = new String[]{
                 mContext.getResources().getString(R.string.applications),
                 mContext.getResources().getString(R.string.technologies),
-                mContext.getResources().getString(R.string.contactInfo)
+                mContext.getResources().getString(R.string.skills)
         };
     }
 
@@ -55,7 +55,7 @@ public class FmMainPagerAdapter extends FragmentStatePagerAdapter {
 
         } else if (position == 2) {
 
-            return ContactInfoFragment.newInstance(position + 1);
+            return SkillsFragment.newInstance(position + 1);
 
 
         } else {

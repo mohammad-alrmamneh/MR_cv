@@ -17,7 +17,6 @@ import com.futureapp.mr_cv.fragments.drawerFragments.DashboardFragment;
 import com.futureapp.mr_cv.fragments.drawerFragments.EducationFragment;
 import com.futureapp.mr_cv.fragments.drawerFragments.PersonalInfoFragment;
 import com.futureapp.mr_cv.fragments.drawerFragments.PurposeFragment;
-import com.futureapp.mr_cv.fragments.drawerFragments.SkillsFragment;
 import com.futureapp.mr_cv.util.Global;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
@@ -49,8 +48,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private static final int Personal_Information = 1;
     private static final int Purpose = 2;
     private static final int Education = 3;
-    private static final int Skills = 4;
-    private static final int Exit = 6;
+    private static final int Exit = 5;
 
 
     private String[] screenTitles;
@@ -89,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
                 createItemFor(Personal_Information),
                 createItemFor(Purpose),
                 createItemFor(Education),
-                createItemFor(Skills),
                 new SpaceItem(48),
                 createItemFor(Exit)));
         adapter.setListener(this);
@@ -127,11 +124,6 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
             EducationFragment educationFragment = new EducationFragment();
             showFragment(educationFragment);
 
-        } else if (position == Skills) {
-
-            SkillsFragment skillsFragment = new SkillsFragment();
-            showFragment(skillsFragment);
-
         } else if (position == Exit) {
 
             Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -160,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     }
 
     private String[] loadScreenTitles() {
-        return getResources().getStringArray(R.array.ld_activityScreenTitles);
+        return getResources().getStringArray(R.array.drawer_title);
     }
 
     private Drawable[] loadScreenIcons() {

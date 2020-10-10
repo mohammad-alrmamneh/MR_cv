@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterInside;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
 import com.futureapp.mr_cv.R;
 import com.futureapp.mr_cv.models.ProjectsModel;
 
@@ -108,7 +107,7 @@ public class RecycleViewApplicationsAdapter extends
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.listview_applications_row_item, parent, false);
+                .inflate(R.layout.recycleview_applications_row_item, parent, false);
         return new MyViewHolder(v);
     }
 }

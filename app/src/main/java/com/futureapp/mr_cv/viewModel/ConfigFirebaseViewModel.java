@@ -10,6 +10,7 @@ import com.futureapp.mr_cv.models.ConfigFirebaseModel;
 import com.futureapp.mr_cv.models.EducationModel;
 import com.futureapp.mr_cv.models.ImagesOfProjectsModel;
 import com.futureapp.mr_cv.models.PersonalInfoModel;
+import com.futureapp.mr_cv.models.PersonalInfo_2_Model;
 import com.futureapp.mr_cv.models.ProjectsModel;
 import com.futureapp.mr_cv.models.SkillsModel;
 import com.futureapp.mr_cv.util.Global;
@@ -111,6 +112,7 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
                         String experience = mFirebaseRemoteConfig.getInstance().getString("experience");
                         String purpose = mFirebaseRemoteConfig.getInstance().getString("purpose");
                         PersonalInfoModel personalInfoModel = personalInfoParsing(mFirebaseRemoteConfig.getInstance().getString("personal_info"));
+                        ArrayList<PersonalInfo_2_Model> personalInfo_2_models = personalInfo_2_Parsing(mFirebaseRemoteConfig.getInstance().getString("personal_info_2"));
                         ArrayList<SkillsModel> skillsModels = skillsParsing(mFirebaseRemoteConfig.getInstance().getString("skills"));
                         ArrayList<EducationModel> educationModel = educationParsing(mFirebaseRemoteConfig.getInstance().getString("education"));
                         ArrayList<CompaniesModel> companiesModel = companiesParsing(mFirebaseRemoteConfig.getInstance().getString("companies"));
@@ -122,6 +124,7 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
                         configFirebaseModel.setExperience(experience);
                         configFirebaseModel.setPurpose(purpose);
                         configFirebaseModel.setPersonalInfoModel(personalInfoModel);
+                        configFirebaseModel.setPersonalInfo_2_models(personalInfo_2_models);
                         configFirebaseModel.setSkillsModel(skillsModels);
                         configFirebaseModel.setEducationModel(educationModel);
                         configFirebaseModel.setCompaniesModel(companiesModel);
@@ -164,6 +167,50 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
         }
     }
 
+    private ArrayList<PersonalInfo_2_Model> personalInfo_2_Parsing(String response) {
+        ArrayList<PersonalInfo_2_Model> personalInfo_2_models = new ArrayList<>();
+
+        try {
+
+            JSONObject jsonObject = new JSONObject(response);
+
+
+            JSONArray info = jsonObject.getJSONArray("info");
+
+            if (info.length() > 0) {
+
+                for (int i = 0; i < info.length(); i++) {
+
+                    JSONObject jsonObjectTemp = info.getJSONObject(i);
+
+                    String title = jsonObjectTemp.getString("title");
+                    String value = jsonObjectTemp.getString("value");
+                    String tag = jsonObjectTemp.getString("tag");
+                    String clickable = jsonObjectTemp.getString("clickable");
+
+                    PersonalInfo_2_Model personalInfo_2_model = new PersonalInfo_2_Model();
+
+                    personalInfo_2_model.setTitle(title);
+                    personalInfo_2_model.setValue(value);
+                    personalInfo_2_model.setTag(tag);
+                    personalInfo_2_model.setClickable(clickable);
+
+                    personalInfo_2_models.add(personalInfo_2_model);
+
+
+                }
+
+            }
+
+            return personalInfo_2_models;
+
+        } catch (JSONException e) {
+            showToastMutableLiveData.setValue(context.getResources().getString(R.string.serverError));
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     private ArrayList<SkillsModel> skillsParsing(String response) {
         ArrayList<SkillsModel> skillsModels = new ArrayList<>();
 
@@ -172,13 +219,13 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
             JSONObject jsonObject = new JSONObject(response);
 
 
-            JSONArray companiesJsonObject = jsonObject.getJSONArray("skills");
+            JSONArray skills = jsonObject.getJSONArray("skills");
 
-            if (companiesJsonObject.length() > 0) {
+            if (skills.length() > 0) {
 
-                for (int i = 0; i < companiesJsonObject.length(); i++) {
+                for (int i = 0; i < skills.length(); i++) {
 
-                    JSONObject jsonObjectTemp = companiesJsonObject.getJSONObject(i);
+                    JSONObject jsonObjectTemp = skills.getJSONObject(i);
 
                     String statment = jsonObjectTemp.getString("statment");
 
@@ -210,13 +257,13 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
             JSONObject jsonObject = new JSONObject(response);
 
 
-            JSONArray companiesJsonObject = jsonObject.getJSONArray("education");
+            JSONArray education = jsonObject.getJSONArray("education");
 
-            if (companiesJsonObject.length() > 0) {
+            if (education.length() > 0) {
 
-                for (int i = 0; i < companiesJsonObject.length(); i++) {
+                for (int i = 0; i < education.length(); i++) {
 
-                    JSONObject jsonObjectTemp = companiesJsonObject.getJSONObject(i);
+                    JSONObject jsonObjectTemp = education.getJSONObject(i);
 
                     String statment = jsonObjectTemp.getString("statment");
 
@@ -292,13 +339,13 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
             JSONObject jsonObject = new JSONObject(response);
 
 
-            JSONArray companiesJsonObject = jsonObject.getJSONArray("projects");
+            JSONArray projects = jsonObject.getJSONArray("projects");
 
-            if (companiesJsonObject.length() > 0) {
+            if (projects.length() > 0) {
 
-                for (int i = 0; i < companiesJsonObject.length(); i++) {
+                for (int i = 0; i < projects.length(); i++) {
 
-                    JSONObject jsonObjectTemp = companiesJsonObject.getJSONObject(i);
+                    JSONObject jsonObjectTemp = projects.getJSONObject(i);
 
                     String project_name = jsonObjectTemp.getString("project_name");
                     String description = jsonObjectTemp.getString("description");

@@ -19,5 +19,12 @@
     <string name="validationInternetConnection">Please check internet connection!</string>
     <string name="serverError">Server Error!</string>
     <string name="refresh_here"><u>Refresh here</u></string>
+    <string name="email">Email</string>
+    <string name="mobile">Mobile</string>
+    <string name="dathOfBirth">Dath of birth</string>
+    <string name="socialStatus">Social status</string>
+    <string name="numberOfChildren">Number of children</string>
+    <string name="location">Location</string>
+    <string name="facebook">Facebook</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.futureapp.mr_cv.fragments.drawerFragments;
+package com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
