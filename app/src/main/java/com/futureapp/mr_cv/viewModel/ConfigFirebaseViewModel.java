@@ -145,6 +145,7 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
 
 
             String profile_pic = jsonObject.getString("profile_pic");
+            String graduate_pic = jsonObject.getString("graduate_pic");
             String name = jsonObject.getString("name");
             String job_title = jsonObject.getString("job_title");
             String dath_of_birth = jsonObject.getString("dath_of_birth");
@@ -152,6 +153,7 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
             String email = jsonObject.getString("email");
 
             personalInfoModel.setProfile_pic(profile_pic);
+            personalInfoModel.setGraduate_pic(graduate_pic);
             personalInfoModel.setName(name);
             personalInfoModel.setJob_title(job_title);
             personalInfoModel.setDath_of_birth(dath_of_birth);

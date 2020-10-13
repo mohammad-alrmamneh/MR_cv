@@ -6,6 +6,7 @@ import android.os.Parcelable;
 public class PersonalInfoModel implements Parcelable {
 
     String profile_pic;
+    String graduate_pic;
     String name;
     String job_title;
     String dath_of_birth;
@@ -18,6 +19,7 @@ public class PersonalInfoModel implements Parcelable {
 
     protected PersonalInfoModel(Parcel in) {
         profile_pic = in.readString();
+        graduate_pic = in.readString();
         name = in.readString();
         job_title = in.readString();
         dath_of_birth = in.readString();
@@ -43,6 +45,14 @@ public class PersonalInfoModel implements Parcelable {
 
     public void setProfile_pic(String profile_pic) {
         this.profile_pic = profile_pic;
+    }
+
+    public String getGraduate_pic() {
+        return graduate_pic;
+    }
+
+    public void setGraduate_pic(String graduate_pic) {
+        this.graduate_pic = graduate_pic;
     }
 
     public String getName() {
@@ -93,6 +103,7 @@ public class PersonalInfoModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(profile_pic);
+        parcel.writeString(graduate_pic);
         parcel.writeString(name);
         parcel.writeString(job_title);
         parcel.writeString(dath_of_birth);
