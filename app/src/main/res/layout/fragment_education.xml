@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient_transparent"
     android:orientation="vertical">
 
-    <TextView
+    <ImageView
+        android:id="@+id/graduate_pic_Iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/education"
-        android:textColor="@color/main_app_black"
-        android:textSize="@dimen/_30sdp" />
+        android:scaleType="centerCrop" />
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_gravity="bottom|center"
+        android:background="@color/transparent8">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_RV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:cacheColorHint="@color/transparent"
+            android:clipToPadding="false"
+            android:fadeScrollbars="true"
+            android:fadingEdge="none"
+            android:scrollbars="none"
+            android:scrollingCache="false"
+            android:smoothScrollbar="true"
+            android:visibility="visible" />
+
+
+    </LinearLayout>
+
+
+</FrameLayout>
+

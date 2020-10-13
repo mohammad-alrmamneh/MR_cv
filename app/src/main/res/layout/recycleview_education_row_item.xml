@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemRow_LL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/_10sdp">
+
+    <ImageView
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="@dimen/_10sdp"
+        android:layout_gravity="top"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:background="@drawable/dot_circle_white_icon"
+        android:minWidth="0dp"
+        android:minHeight="0dp" />
+
+    <TextView
+        android:id="@+id/statment_Tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:gravity="top|left"
+        android:text="lkdnvksjbdvkjbsdvjbsdkjvbskdjbvkjsdbvkjsbdvkjbsdkjvbdksbkvsbdkvbsdkbvksvb"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_11ssp" />
+
+</LinearLayout>

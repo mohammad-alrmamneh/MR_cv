@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.futureapp.mr_cv.R;
 import com.futureapp.mr_cv.adapters.DrawerAdapter;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     @BindView(R.id.export_PDF_Btn)
     Button exportPDFBtn;
 
+    public static RelativeLayout main_toolbar_Rl;
+
     boolean doubleBackToExitPressedOnce = false;
 
     private static final int Dashboard = 0;
@@ -66,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        main_toolbar_Rl = findViewById(R.id.main_toolbar_Rl);
 
         initialDrawer(savedInstanceState);
     }
