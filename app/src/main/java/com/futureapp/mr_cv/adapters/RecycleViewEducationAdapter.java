@@ -6,11 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.futureapp.mr_cv.R;
 import com.futureapp.mr_cv.models.EducationModel;
-import com.futureapp.mr_cv.models.PersonalInfo_2_Model;
+import com.hanks.htextview.fade.FadeTextView;
 
 import java.util.ArrayList;
 
@@ -31,14 +30,14 @@ public class RecycleViewEducationAdapter extends
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public LinearLayout itemRow_LL;
-        public TextView statment_Tv;
+        public FadeTextView statment_Tv;
 
         public MyViewHolder(View view) {
             super(view);
 
 
             itemRow_LL = (LinearLayout) view.findViewById(R.id.itemRow_LL);
-            statment_Tv = (TextView) view.findViewById(R.id.statment_Tv);
+            statment_Tv = (FadeTextView) view.findViewById(R.id.statment_Tv);
 
             itemRow_LL.setOnClickListener(this);
 
@@ -66,7 +65,7 @@ public class RecycleViewEducationAdapter extends
 
         EducationModel educationModel = educationModels.get(position);
 
-        holder.statment_Tv.setText(educationModel.getStatment());
+        holder.statment_Tv.animateText(educationModel.getStatment());
 
     }
 
