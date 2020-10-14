@@ -13,6 +13,7 @@ public class ConfigFirebaseModel implements Parcelable {
     PersonalInfoModel personalInfoModel;
     ArrayList<PersonalInfo_2_Model> personalInfo_2_models;
     ArrayList<SkillsModel> skillsModel;
+    ArrayList<TechnologiesModel> technologiesModels;
     ArrayList<EducationModel> educationModel;
     ArrayList<CompaniesModel> companiesModel;
     ArrayList<ProjectsModel> projectsModel;
@@ -29,6 +30,7 @@ public class ConfigFirebaseModel implements Parcelable {
         personalInfoModel = in.readParcelable(PersonalInfoModel.class.getClassLoader());
         personalInfo_2_models = in.createTypedArrayList(PersonalInfo_2_Model.CREATOR);
         skillsModel = in.createTypedArrayList(SkillsModel.CREATOR);
+        technologiesModels = in.createTypedArrayList(TechnologiesModel.CREATOR);
         educationModel = in.createTypedArrayList(EducationModel.CREATOR);
         companiesModel = in.createTypedArrayList(CompaniesModel.CREATOR);
         projectsModel = in.createTypedArrayList(ProjectsModel.CREATOR);
@@ -94,6 +96,14 @@ public class ConfigFirebaseModel implements Parcelable {
         this.skillsModel = skillsModel;
     }
 
+    public ArrayList<TechnologiesModel> getTechnologiesModels() {
+        return technologiesModels;
+    }
+
+    public void setTechnologiesModels(ArrayList<TechnologiesModel> technologiesModels) {
+        this.technologiesModels = technologiesModels;
+    }
+
     public ArrayList<EducationModel> getEducationModel() {
         return educationModel;
     }
@@ -131,6 +141,7 @@ public class ConfigFirebaseModel implements Parcelable {
         parcel.writeParcelable(personalInfoModel, i);
         parcel.writeTypedList(personalInfo_2_models);
         parcel.writeTypedList(skillsModel);
+        parcel.writeTypedList(technologiesModels);
         parcel.writeTypedList(educationModel);
         parcel.writeTypedList(companiesModel);
         parcel.writeTypedList(projectsModel);

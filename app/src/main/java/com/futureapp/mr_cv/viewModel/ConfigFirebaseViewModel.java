@@ -13,6 +13,7 @@ import com.futureapp.mr_cv.models.PersonalInfoModel;
 import com.futureapp.mr_cv.models.PersonalInfo_2_Model;
 import com.futureapp.mr_cv.models.ProjectsModel;
 import com.futureapp.mr_cv.models.SkillsModel;
+import com.futureapp.mr_cv.models.TechnologiesModel;
 import com.futureapp.mr_cv.util.Global;
 import com.futureapp.mr_cv.util.TinyDB;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -114,6 +115,7 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
                         PersonalInfoModel personalInfoModel = personalInfoParsing(mFirebaseRemoteConfig.getInstance().getString("personal_info"));
                         ArrayList<PersonalInfo_2_Model> personalInfo_2_models = personalInfo_2_Parsing(mFirebaseRemoteConfig.getInstance().getString("personal_info_2"));
                         ArrayList<SkillsModel> skillsModels = skillsParsing(mFirebaseRemoteConfig.getInstance().getString("skills"));
+                        ArrayList<TechnologiesModel> technologiesModels = technologiesParsing(mFirebaseRemoteConfig.getInstance().getString("technologies"));
                         ArrayList<EducationModel> educationModel = educationParsing(mFirebaseRemoteConfig.getInstance().getString("education"));
                         ArrayList<CompaniesModel> companiesModel = companiesParsing(mFirebaseRemoteConfig.getInstance().getString("companies"));
                         ArrayList<ProjectsModel> projectsModel = projectsParsing(mFirebaseRemoteConfig.getInstance().getString("projects"));
@@ -126,6 +128,7 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
                         configFirebaseModel.setPersonalInfoModel(personalInfoModel);
                         configFirebaseModel.setPersonalInfo_2_models(personalInfo_2_models);
                         configFirebaseModel.setSkillsModel(skillsModels);
+                        configFirebaseModel.setTechnologiesModels(technologiesModels);
                         configFirebaseModel.setEducationModel(educationModel);
                         configFirebaseModel.setCompaniesModel(companiesModel);
                         configFirebaseModel.setProjectsModel(projectsModel);
@@ -243,6 +246,46 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
             }
 
             return skillsModels;
+
+        } catch (JSONException e) {
+            showToastMutableLiveData.setValue(context.getResources().getString(R.string.serverError));
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private ArrayList<TechnologiesModel> technologiesParsing(String response) {
+        ArrayList<TechnologiesModel> technologiesModels = new ArrayList<>();
+
+        try {
+
+            JSONObject jsonObject = new JSONObject(response);
+
+
+            JSONArray skills = jsonObject.getJSONArray("technologies");
+
+            if (skills.length() > 0) {
+
+                for (int i = 0; i < skills.length(); i++) {
+
+                    JSONObject jsonObjectTemp = skills.getJSONObject(i);
+
+                    String statment = jsonObjectTemp.getString("statment");
+                    String rate = jsonObjectTemp.getString("rate");
+
+                    TechnologiesModel technologiesModel = new TechnologiesModel();
+
+                    technologiesModel.setStatment(statment);
+                    technologiesModel.setRate(rate);
+
+                    technologiesModels.add(technologiesModel);
+
+
+                }
+
+            }
+
+            return technologiesModels;
 
         } catch (JSONException e) {
             showToastMutableLiveData.setValue(context.getResources().getString(R.string.serverError));
