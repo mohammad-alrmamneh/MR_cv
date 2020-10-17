@@ -4,8 +4,7 @@ import android.content.Context;
 
 import com.futureapp.mr_cv.R;
 import com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap.ApplicationsFragment;
-import com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap.TechnologiesFragment;
-import com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap.SkillsFragment;
+import com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap.TechnologiesAndSkillsFragment;
 import com.futureapp.mr_cv.util.TinyDB;
 
 import androidx.fragment.app.Fragment;
@@ -14,7 +13,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class FmMainPagerAdapter extends FragmentStatePagerAdapter {
 
-    int PAGE_COUNT = 3;
+    int PAGE_COUNT = 2;
     private String tabTitles[];
 
     private Context mContext;
@@ -29,8 +28,7 @@ public class FmMainPagerAdapter extends FragmentStatePagerAdapter {
 
         tabTitles = new String[]{
                 mContext.getResources().getString(R.string.applications),
-                mContext.getResources().getString(R.string.technologies),
-                mContext.getResources().getString(R.string.skills)
+                mContext.getResources().getString(R.string.technologiesAndSkills)
         };
     }
 
@@ -50,12 +48,7 @@ public class FmMainPagerAdapter extends FragmentStatePagerAdapter {
 
         } else if (position == 1) {
 
-            return TechnologiesFragment.newInstance(position + 1);
-
-
-        } else if (position == 2) {
-
-            return SkillsFragment.newInstance(position + 1);
+            return TechnologiesAndSkillsFragment.newInstance(position + 1);
 
 
         } else {

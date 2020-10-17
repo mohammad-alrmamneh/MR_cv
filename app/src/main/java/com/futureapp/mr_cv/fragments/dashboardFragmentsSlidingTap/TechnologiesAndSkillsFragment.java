@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import co.lujun.androidtagview.TagContainerLayout;
 
 
-public class TechnologiesFragment extends Fragment {
+public class TechnologiesAndSkillsFragment extends Fragment {
 
     public static final String ARG_PAGE = "ARG_PAGE";
 
@@ -28,10 +28,10 @@ public class TechnologiesFragment extends Fragment {
     private int mPage;
 
 
-    public static TechnologiesFragment newInstance(int page) {
+    public static TechnologiesAndSkillsFragment newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
-        TechnologiesFragment fragment = new TechnologiesFragment();
+        TechnologiesAndSkillsFragment fragment = new TechnologiesAndSkillsFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -45,7 +45,7 @@ public class TechnologiesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_technologies, container, false);
+        View view = inflater.inflate(R.layout.fragment_technologies_skills, container, false);
         ButterKnife.bind(this, view);
 
         setData(Global.configFirebaseModel.getTechnologiesModels());
