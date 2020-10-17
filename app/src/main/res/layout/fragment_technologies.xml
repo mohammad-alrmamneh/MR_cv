@@ -1,13 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_app_black"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/technologies"
-        android:textColor="@color/main_app_black"
-        android:textSize="@dimen/_30sdp" />
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <co.lujun.androidtagview.TagContainerLayout
+                android:id="@+id/tags_TCL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:background="@color/transparent"
+                android:padding="@dimen/_10sdp"
+                app:container_background_color="@color/transparent"
+                app:container_border_color="@color/transparent"
+                app:container_border_width="0dp"
+                app:container_enable_drag="false"
+                app:horizontal_interval="@dimen/_10sdp"
+                app:tag_background_color="@color/transparent"
+                app:tag_border_color="@color/main_app_color_2"
+                app:tag_border_width="@dimen/_1sdp"
+                app:tag_clickable="false"
+                app:tag_max_length="35"
+                app:tag_text_color="@color/white"
+                app:tag_text_size="@dimen/_10ssp"
+                app:tag_theme="none"
+                app:vertical_interval="@dimen/_10sdp" />
+
+        </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>

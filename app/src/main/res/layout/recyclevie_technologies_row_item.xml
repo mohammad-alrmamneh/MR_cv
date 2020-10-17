@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemRow_Rl"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_60sdp"
+    android:padding="@dimen/_10sdp">
+
+    <TextView
+        android:id="@+id/statment_Tv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="technology"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp" />
+
+    <com.ramijemli.percentagechartview.PercentageChartView
+        android:id="@+id/view_id"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        app:pcv_textSize="@dimen/_18ssp"
+        app:pcv_progress="50"
+        app:pcv_animDuration="800"
+        app:pcv_animInterpolator="anticipate_overshoot"
+        app:pcv_mode="ring"
+        app:pcv_orientation="clockwise" />
+
+
+</RelativeLayout>
