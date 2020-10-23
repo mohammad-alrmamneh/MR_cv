@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
         slidingRootNav = new SlidingRootNavBuilder(this)
                 .withMenuOpened(false)
-                .withContentClickableWhenMenuOpened(true)
+                .withContentClickableWhenMenuOpened(false)
                 .withSavedState(savedInstanceState)
                 .withMenuLayout(R.layout.menu_left_drawer)
                 .inject();

@@ -1,5 +1,6 @@
 package com.futureapp.mr_cv.fragments.drawerFragments;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,15 +13,15 @@ import android.widget.TextView;
 import com.astuetz.PagerSlidingTabStrip;
 import com.bumptech.glide.Glide;
 import com.futureapp.mr_cv.R;
+import com.futureapp.mr_cv.activities.CompaniesActivity;
 import com.futureapp.mr_cv.adapters.FmMainPagerAdapter;
-import com.futureapp.mr_cv.models.ConfigFirebaseModel;
 import com.futureapp.mr_cv.util.Global;
-import com.futureapp.mr_cv.util.TinyDB;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
@@ -117,5 +118,12 @@ public class DashboardFragment extends Fragment {
 
         }
 
+    }
+
+    @OnClick(R.id.company_LL)
+    public void onViewClicked() {
+
+        Intent i = new Intent(getActivity(), CompaniesActivity.class);
+        startActivity(i);
     }
 }
