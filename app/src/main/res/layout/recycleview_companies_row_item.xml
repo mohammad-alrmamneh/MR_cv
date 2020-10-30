@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemRow_LL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/companyName_Tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="100"
+            android:gravity="center|left"
+            android:includeFontPadding="false"
+            android:paddingRight="@dimen/_10sdp"
+            android:singleLine="true"
+            android:text=""
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16ssp" />
+
+        <TextView
+            android:id="@+id/year_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|left"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:text=""
+            android:textAllCaps="false"
+            android:textColor="@color/main_app_color_1"
+            android:textSize="@dimen/_11ssp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/companyDescription_Tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:gravity="center|left"
+        android:includeFontPadding="false"
+        android:maxLines="3"
+        android:textAllCaps="false"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_12ssp" />
+
+    <TextView
+        android:id="@+id/companyWebsite_Tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:gravity="center|left"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:text=""
+        android:textAllCaps="false"
+        android:textColor="@color/main_app_color_1"
+        android:textSize="@dimen/_12ssp" />
+
+    <TextView
+        android:id="@+id/experience_Tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:gravity="center|left"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:text="@string/experience"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp" />
+
+    <com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar
+        android:id="@+id/experience_Pb"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:indeterminate="false"
+        app:backgroundColor="@color/main_app_color_1_with_transparent"
+        app:progressColor="@color/main_app_color_1" />
+
+</LinearLayout>

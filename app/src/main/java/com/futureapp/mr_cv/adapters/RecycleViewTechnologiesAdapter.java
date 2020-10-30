@@ -123,7 +123,7 @@ public class RecycleViewTechnologiesAdapter extends
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recyclevie_technologies_row_item, parent, false);
+                .inflate(R.layout.recycleview_technologies_row_item, parent, false);
         return new MyViewHolder(v);
     }
 }

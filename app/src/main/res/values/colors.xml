@@ -26,7 +26,9 @@
     <color name="blue">#0000FF</color>
 
     <color name="main_app_color_1">#24C6DC</color>
+    <color name="main_app_color_1_with_transparent">#6024C6DC</color>
     <color name="main_app_color_2">#514A9D</color>
     <color name="main_app_black">#000000</color>
+    <color name="main_app_black_2">#1c262f</color>
 
 </resources>
