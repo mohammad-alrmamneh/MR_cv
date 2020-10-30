@@ -352,6 +352,7 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
                     String description = jsonObjectTemp.getString("description");
                     String company_website = jsonObjectTemp.getString("company_website");
                     String year = jsonObjectTemp.getString("year");
+                    String experience = jsonObjectTemp.getString("experience");
 
                     CompaniesModel companiesModel = new CompaniesModel();
 
@@ -359,6 +360,7 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
                     companiesModel.setDescription(description);
                     companiesModel.setCompany_website(company_website);
                     companiesModel.setYear(year);
+                    companiesModel.setExperience(experience);
 
                     companiesModels.add(companiesModel);
 

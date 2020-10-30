@@ -9,6 +9,7 @@ public class CompaniesModel implements Parcelable {
     String description;
     String company_website;
     String year;
+    String experience;
 
     public CompaniesModel() {
 
@@ -20,6 +21,7 @@ public class CompaniesModel implements Parcelable {
         description = in.readString();
         company_website = in.readString();
         year = in.readString();
+        experience = in.readString();
     }
 
     public static final Creator<CompaniesModel> CREATOR = new Creator<CompaniesModel>() {
@@ -66,6 +68,14 @@ public class CompaniesModel implements Parcelable {
         this.year = year;
     }
 
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -77,5 +87,6 @@ public class CompaniesModel implements Parcelable {
         parcel.writeString(description);
         parcel.writeString(company_website);
         parcel.writeString(year);
+        parcel.writeString(experience);
     }
 }
