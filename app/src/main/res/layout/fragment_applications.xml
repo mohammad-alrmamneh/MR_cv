@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent"
+    android:background="@color/main_app_black_2"
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -14,7 +14,7 @@
         android:clipToPadding="false"
         android:fadeScrollbars="true"
         android:fadingEdge="none"
-        android:padding="@dimen/_5sdp"
+        android:padding="@dimen/_10sdp"
         android:scrollbars="none"
         android:scrollingCache="false"
         android:smoothScrollbar="true"

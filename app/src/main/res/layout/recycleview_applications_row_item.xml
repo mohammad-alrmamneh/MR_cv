@@ -1,30 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/itemRow_Fl"
+    android:id="@+id/itemRow_LL"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_200sdp"
-    android:orientation="vertical">
+    android:layout_height="@dimen/_155sdp"
+    android:background="@color/transparent">
 
-    <ImageView
-        android:id="@+id/image_Iv"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        android:scaleType="fitXY" />
+        android:layout_height="@dimen/_115sdp"
+        android:layout_marginLeft="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:background="@drawable/shape_bg_for_applications_item"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/_50sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingRight="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_30sdp">
 
-    <TextView
-        android:id="@+id/info_Tv"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_gravity="center|bottom"
-        android:background="@color/transparent2"
-        android:gravity="center|left"
-        android:maxLines="1"
-        android:padding="@dimen/_3sdp"
+        <TextView
+            android:id="@+id/projectName_Tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|left"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:text="project name"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:id="@+id/projectDescription_Tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:ellipsize="end"
+            android:gravity="top|left"
+            android:includeFontPadding="false"
+            android:maxLines="3"
+            android:minLines="3"
+            android:text=""
+            android:textAllCaps="false"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_10ssp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_circle_profile_pic_border"
+        android:padding="@dimen/_1sdp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/appPic_CIV"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_gravity="center"
+            android:src="@color/gray" />
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/goPlaystore_Btn"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:background="@drawable/shape_bg_for_go_playstore_btn"
+        android:gravity="center"
+        android:text="@string/goPlaystore"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="@dimen/_11ssp" />
+        android:textSize="@dimen/_11sdp" />
 
 </FrameLayout>

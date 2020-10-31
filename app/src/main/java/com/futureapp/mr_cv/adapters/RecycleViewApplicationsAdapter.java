@@ -5,18 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterInside;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.futureapp.mr_cv.R;
+import com.futureapp.mr_cv.databinding.RecycleviewApplicationsRowItemBinding;
 import com.futureapp.mr_cv.models.ProjectsModel;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecycleViewApplicationsAdapter extends
@@ -33,21 +32,17 @@ public class RecycleViewApplicationsAdapter extends
      */
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public FrameLayout itemRow_Fl;
-        public ImageView image_Iv;
-        public TextView info_Tv;
+        public RecycleviewApplicationsRowItemBinding binding;
 
-        public MyViewHolder(View view) {
-            super(view);
+        public MyViewHolder(RecycleviewApplicationsRowItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
 
-
-            itemRow_Fl = (FrameLayout) view.findViewById(R.id.itemRow_Fl);
-            image_Iv = (ImageView) view.findViewById(R.id.image_Iv);
-            info_Tv = (TextView) view.findViewById(R.id.info_Tv);
-
-            itemRow_Fl.setOnClickListener(this);
+            binding.itemRowLL.setOnClickListener(this);
+            binding.goPlaystoreBtn.setOnClickListener(this);
 
         }
+
 
         @Override
         public void onClick(View view) {
@@ -80,11 +75,12 @@ public class RecycleViewApplicationsAdapter extends
                     .transform(new CenterInside(), new RoundedCorners(margin))
                     .placeholder(R.color.gray)
                     .error(R.color.gray)
-                    .into(holder.image_Iv);
+                    .into(holder.binding.appPicCIV);
 
         }
 
-        holder.info_Tv.setText(projectsModels.get(position).getProject_name() + ": " + projectsModels.get(position).getDescription());
+        holder.binding.projectNameTv.setText(projectsModels.get(position).getProject_name());
+        holder.binding.projectDescriptionTv.setText(projectsModels.get(position).getDescription());
 
 
     }
@@ -104,10 +100,10 @@ public class RecycleViewApplicationsAdapter extends
         return position;
     }
 
+    @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycleview_applications_row_item, parent, false);
-        return new MyViewHolder(v);
+    public RecycleViewApplicationsAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new RecycleViewApplicationsAdapter.MyViewHolder(RecycleviewApplicationsRowItemBinding.inflate(LayoutInflater.from(parent.getContext()),
+                parent, false));
     }
 }

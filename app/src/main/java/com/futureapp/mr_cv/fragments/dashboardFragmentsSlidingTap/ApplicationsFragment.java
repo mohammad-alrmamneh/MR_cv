@@ -63,7 +63,7 @@ public class ApplicationsFragment extends Fragment implements AdapterView.OnItem
         listRV.setAdapter(recycleViewApplicationsAdapter);
 
         DividerItemDecoration itemDecorator = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
-        itemDecorator.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.shape_recycleview_divider_hieght));
+        itemDecorator.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.shape_recycleview_divider_hieght_for_applications));
 
         listRV.addItemDecoration(itemDecorator);
 
@@ -77,7 +77,17 @@ public class ApplicationsFragment extends Fragment implements AdapterView.OnItem
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-        Global.toast(getActivity(), Global.configFirebaseModel.getProjectsModel().get(position).getProject_name());
+        int goPlaystore_Btn_ID = R.id.goPlaystore_Btn;
+
+        if (view.getId() == goPlaystore_Btn_ID) {
+
+            Global.toast(getActivity(), Global.configFirebaseModel.getProjectsModel().get(position).getPlaystore_link());
+
+        } else {
+
+            Global.toast(getActivity(), Global.configFirebaseModel.getProjectsModel().get(position).getProject_name());
+        }
+
 
     }
 }
