@@ -84,7 +84,7 @@ public class ConfigFirebaseViewModel extends AndroidViewModel {
         // Setting to set the minimum fetch interval.
         // [START enable_dev_mode]
         FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
-                .setMinimumFetchIntervalInSeconds(3600)
+                .setMinimumFetchIntervalInSeconds(0)
                 .build();
         mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
         // [END enable_dev_mode]

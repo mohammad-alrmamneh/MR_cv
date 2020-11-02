@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import com.futureapp.mr_cv.R;
 import com.futureapp.mr_cv.databinding.RecycleviewCompaniesRowItemBinding;
 import com.futureapp.mr_cv.models.CompaniesModel;
 
@@ -67,10 +66,6 @@ public class RecycleViewCompaniesAdapter extends
         holder.binding.yearTv.setText(companiesModel.getYear());
 
         int experience = Integer.parseInt(companiesModel.getExperience());
-
-        holder.binding.experienceTv.setText(context.getResources().getString(R.string.experience) + " " + experience + "%");
-
-        holder.binding.experiencePb.animateProgress(2000, 0, experience); // (animationDuration, oldProgress, newProgress)
 
     }
 

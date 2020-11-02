@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/itemRow_LL"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -67,28 +66,5 @@
         android:textAllCaps="false"
         android:textColor="@color/main_app_color_1"
         android:textSize="@dimen/_12ssp" />
-
-    <TextView
-        android:id="@+id/experience_Tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:gravity="center|left"
-        android:includeFontPadding="false"
-        android:singleLine="true"
-        android:text="@string/experience"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_12ssp" />
-
-    <com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar
-        android:id="@+id/experience_Pb"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:indeterminate="false"
-        app:backgroundColor="@color/main_app_color_1_with_transparent"
-        app:progressColor="@color/main_app_color_1" />
 
 </LinearLayout>
