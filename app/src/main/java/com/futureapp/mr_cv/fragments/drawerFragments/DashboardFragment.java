@@ -14,7 +14,9 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.bumptech.glide.Glide;
 import com.futureapp.mr_cv.R;
 import com.futureapp.mr_cv.activities.CompaniesActivity;
+import com.futureapp.mr_cv.activities.ExperienceActivity;
 import com.futureapp.mr_cv.adapters.FmMainPagerAdapter;
+import com.futureapp.mr_cv.databinding.FragmentDashboardBinding;
 import com.futureapp.mr_cv.util.Global;
 
 import androidx.fragment.app.Fragment;
@@ -28,6 +30,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class DashboardFragment extends Fragment {
 
     public static final String ARG_PAGE = "ARG_PAGE";
+
+    FragmentDashboardBinding binding;
 
     @BindView(R.id.profilePic_CIV)
     CircleImageView profilePicCIV;
@@ -71,12 +75,21 @@ public class DashboardFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
         ButterKnife.bind(this, view);
 
         setViewPager();
 
         setData();
+
+        binding.experienceLL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), ExperienceActivity.class);
+                startActivity(i);
+            }
+        });
 
         return view;
     }
@@ -103,9 +116,20 @@ public class DashboardFragment extends Fragment {
     private void setData() {
         projectsTv.setText(Global.configFirebaseModel.getProjectsModel().size() + "");
         experienceTv.setText(Global.configFirebaseModel.getExperience() + "");
-        companyTv.setText(Global.configFirebaseModel.getCompaniesModel().size() + "");
         nameTv.setText(Global.configFirebaseModel.getPersonalInfoModel().getName() + "");
         jobTitleTv.setText(Global.configFirebaseModel.getPersonalInfoModel().getJob_title() + "");
+
+        int companiesNumber = 0;
+
+        for (int i = 0; i < Global.configFirebaseModel.getCompaniesModel().size(); i++) {
+            if (!Global.configFirebaseModel.getCompaniesModel().get(i).getCompany_name().equalsIgnoreCase(getResources().getString(R.string.freelance))) {
+
+                companiesNumber = companiesNumber + 1;
+
+            }
+        }
+
+        companyTv.setText(companiesNumber + "");
 
         if (Global.configFirebaseModel.getPersonalInfoModel().getProfile_pic().length() > 0) {
 

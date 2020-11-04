@@ -65,8 +65,6 @@ public class RecycleViewCompaniesAdapter extends
         holder.binding.companyWebsiteTv.setText(companiesModel.getCompany_website());
         holder.binding.yearTv.setText(companiesModel.getYear());
 
-        int experience = Integer.parseInt(companiesModel.getExperience());
-
     }
 
     @Override

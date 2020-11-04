@@ -44,9 +44,19 @@ public class CompaniesActivity extends AppCompatActivity implements AdapterView.
 
     private void setData(ArrayList<CompaniesModel> companiesModels) {
 
+        ArrayList<CompaniesModel> justCompanies = new ArrayList<>();//add just companies without freelance
+
+        for (int i = 0; i < companiesModels.size(); i++) {
+            if (!companiesModels.get(i).getCompany_name().equalsIgnoreCase(getResources().getString(R.string.freelance))) {
+
+                justCompanies.add(companiesModels.get(i));
+
+            }
+        }
+
         binding.toolbar.titleTv.setText(getResources().getString(R.string.companies));
 
-        recycleViewCompaniesAdapter = new RecycleViewCompaniesAdapter(this, companiesModels, this);
+        recycleViewCompaniesAdapter = new RecycleViewCompaniesAdapter(this, justCompanies, this);
         binding.listRv.setAdapter(recycleViewCompaniesAdapter);
 
         DividerItemDecoration itemDecorator = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
