@@ -1,5 +1,8 @@
 package com.futureapp.mr_cv.fragments.drawerFragments;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +12,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.futureapp.mr_cv.R;
-import com.futureapp.mr_cv.adapters.RecycleViewApplicationsAdapter;
+import com.futureapp.mr_cv.activities.ImageAllScreenActivity;
 import com.futureapp.mr_cv.adapters.RecycleViewPersonalInfoAdapter;
-import com.futureapp.mr_cv.models.PersonalInfoModel;
+import com.futureapp.mr_cv.databinding.FragmentPersonalInfoBinding;
 import com.futureapp.mr_cv.models.PersonalInfo_2_Model;
-import com.futureapp.mr_cv.models.ProjectsModel;
+import com.futureapp.mr_cv.util.Constants;
 import com.futureapp.mr_cv.util.Global;
 
 import java.util.ArrayList;
@@ -28,10 +31,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static android.content.Context.CLIPBOARD_SERVICE;
+
 
 public class PersonalInfoFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     public static final String ARG_PAGE = "ARG_PAGE";
+
+    private FragmentPersonalInfoBinding binding;
 
     RecycleViewPersonalInfoAdapter recycleViewPersonalInfoAdapter;
 
@@ -44,6 +51,9 @@ public class PersonalInfoFragment extends Fragment implements AdapterView.OnItem
     @BindView(R.id.list_RV)
     RecyclerView listRV;
 
+    private ClipboardManager myClipboard;
+    private ClipData myClip;
+
     public static PersonalInfoFragment newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
@@ -55,14 +65,29 @@ public class PersonalInfoFragment extends Fragment implements AdapterView.OnItem
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        myClipboard = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_personal_info, container, false);
+        binding = FragmentPersonalInfoBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
         ButterKnife.bind(this, view);
 
         setData(Global.configFirebaseModel.getPersonalInfo_2_models());
+
+        binding.profilePicFl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(getActivity(), ImageAllScreenActivity.class);
+                i.putExtra(Constants.PutExtra_Keys.image, Global.configFirebaseModel.getPersonalInfoModel().getProfile_pic());
+                startActivity(i);
+
+
+            }
+        });
 
         return view;
     }
@@ -104,7 +129,26 @@ public class PersonalInfoFragment extends Fragment implements AdapterView.OnItem
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+        PersonalInfo_2_Model personalInfo_2_model = Global.configFirebaseModel.getPersonalInfo_2_models().get(position);
+
+        if (personalInfo_2_model.getTag().equalsIgnoreCase(getResources().getString(R.string.emailTag))) {
+
+            myClip = ClipData.newPlainText("text", personalInfo_2_model.getValue());
+            myClipboard.setPrimaryClip(myClip);
+
+            Global.toast(getActivity(), getResources().getString(R.string.emailCopied));
+
+        } else if (personalInfo_2_model.getTag().equalsIgnoreCase(getResources().getString(R.string.linkedInTag))) {
+
+            Global.openURL(getActivity(), personalInfo_2_model.getValue());
+
+        } else if (personalInfo_2_model.getTag().equalsIgnoreCase(getResources().getString(R.string.mobileTag))) {
+
+            Global.callPhone(getActivity(), personalInfo_2_model.getValue());
+
+        }
 
     }
 }

@@ -19,6 +19,7 @@
             android:paddingRight="@dimen/_15sdp">
 
             <FrameLayout
+                android:id="@+id/profilePic_Fl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_circle_profile_pic_border"

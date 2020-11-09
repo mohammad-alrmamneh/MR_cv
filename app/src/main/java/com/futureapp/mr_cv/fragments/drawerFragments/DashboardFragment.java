@@ -15,8 +15,10 @@ import com.bumptech.glide.Glide;
 import com.futureapp.mr_cv.R;
 import com.futureapp.mr_cv.activities.CompaniesActivity;
 import com.futureapp.mr_cv.activities.ExperienceActivity;
+import com.futureapp.mr_cv.activities.ImageAllScreenActivity;
 import com.futureapp.mr_cv.adapters.FmMainPagerAdapter;
 import com.futureapp.mr_cv.databinding.FragmentDashboardBinding;
+import com.futureapp.mr_cv.util.Constants;
 import com.futureapp.mr_cv.util.Global;
 
 import androidx.fragment.app.Fragment;
@@ -82,6 +84,18 @@ public class DashboardFragment extends Fragment {
         setViewPager();
 
         setData();
+
+        binding.profilePicFl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(getActivity(), ImageAllScreenActivity.class);
+                i.putExtra(Constants.PutExtra_Keys.image, Global.configFirebaseModel.getPersonalInfoModel().getProfile_pic());
+                startActivity(i);
+
+
+            }
+        });
 
         binding.experienceLL.setOnClickListener(new View.OnClickListener() {
             @Override

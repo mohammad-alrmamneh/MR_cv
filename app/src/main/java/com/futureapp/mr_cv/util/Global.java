@@ -1,14 +1,11 @@
 package com.futureapp.mr_cv.util;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -16,14 +13,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.provider.Settings;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Base64;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -48,11 +41,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
-
-import androidx.core.app.ActivityCompat;
-import io.github.inflationx.calligraphy3.CalligraphyConfig;
-import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
-import io.github.inflationx.viewpump.ViewPump;
 
 public class Global {
 
@@ -176,6 +164,21 @@ public class Global {
 
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             context.startActivity(browserIntent);
+
+        }
+    }
+
+    public static void openPlaystoreAppURL(Context context, String url) {
+        if (!url.equalsIgnoreCase("")) {
+            if (!url.startsWith("http://") && !url.startsWith("https://")) {
+                url = "http://" + url;
+            }
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(
+                    url));
+            intent.setPackage("com.android.vending");
+            context.startActivity(intent);
 
         }
     }
@@ -411,7 +414,7 @@ public class Global {
             String country = locale.getDisplayCountry();
             if (country.trim().length() > 0 && !countries.contains(country) && !country.equalsIgnoreCase("israel")) {
 
-                    countries.add(country);
+                countries.add(country);
 
             }
         }

@@ -1,6 +1,7 @@
 package com.futureapp.mr_cv.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,6 +10,8 @@ import com.futureapp.mr_cv.R;
 import com.futureapp.mr_cv.adapters.RecycleViewCompaniesAdapter;
 import com.futureapp.mr_cv.databinding.ActivityCompaniesBinding;
 import com.futureapp.mr_cv.models.CompaniesModel;
+import com.futureapp.mr_cv.models.TextAllScreenModel;
+import com.futureapp.mr_cv.util.Constants;
 import com.futureapp.mr_cv.util.Global;
 
 import java.util.ArrayList;
@@ -72,7 +75,29 @@ public class CompaniesActivity extends AppCompatActivity implements AdapterView.
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+        CompaniesModel companiesModel = Global.configFirebaseModel.getCompaniesModel().get(position);
+
+        int companyWebsite_Tv_ID = R.id.companyWebsite_Tv;
+
+        if (view.getId() == companyWebsite_Tv_ID) {
+
+            Global.openURL(CompaniesActivity.this, companiesModel.getCompany_website());
+
+        } else {
+
+            TextAllScreenModel textAllScreenModel = new TextAllScreenModel();
+
+            textAllScreenModel.setImage("");
+            textAllScreenModel.setTitle(companiesModel.getCompany_name());
+            textAllScreenModel.setDescription(companiesModel.getDescription());
+
+            Intent i = new Intent(CompaniesActivity.this, TextAllScreenActivity.class);
+            i.putExtra(Constants.PutExtra_Keys.textAllScreen, textAllScreenModel);
+            startActivity(i);
+        }
+
 
     }
 }

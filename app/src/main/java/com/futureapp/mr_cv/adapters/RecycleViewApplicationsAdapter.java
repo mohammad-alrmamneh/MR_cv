@@ -39,7 +39,7 @@ public class RecycleViewApplicationsAdapter extends
             this.binding = binding;
 
             binding.itemRowLL.setOnClickListener(this);
-            binding.goPlaystoreBtn.setOnClickListener(this);
+            binding.goPlaystoreLl.setOnClickListener(this);
 
         }
 

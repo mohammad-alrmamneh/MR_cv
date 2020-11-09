@@ -1,5 +1,6 @@
 package com.futureapp.mr_cv.fragments.dashboardFragmentsSlidingTap;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,8 +8,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.futureapp.mr_cv.R;
+import com.futureapp.mr_cv.activities.TextAllScreenActivity;
 import com.futureapp.mr_cv.adapters.RecycleViewApplicationsAdapter;
 import com.futureapp.mr_cv.models.ProjectsModel;
+import com.futureapp.mr_cv.models.TextAllScreenModel;
+import com.futureapp.mr_cv.util.Constants;
 import com.futureapp.mr_cv.util.Global;
 
 import java.util.ArrayList;
@@ -77,15 +81,26 @@ public class ApplicationsFragment extends Fragment implements AdapterView.OnItem
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-        int goPlaystore_Btn_ID = R.id.goPlaystore_Btn;
+        ProjectsModel projectsModel = Global.configFirebaseModel.getProjectsModel().get(position);
 
-        if (view.getId() == goPlaystore_Btn_ID) {
+        int goPlaystore_Ll_ID = R.id.goPlaystore_Ll;
 
-            Global.toast(getActivity(), Global.configFirebaseModel.getProjectsModel().get(position).getPlaystore_link());
+        if (view.getId() == goPlaystore_Ll_ID) {
+
+            Global.openPlaystoreAppURL(getActivity(), projectsModel.getPlaystore_link());
 
         } else {
 
-            Global.toast(getActivity(), Global.configFirebaseModel.getProjectsModel().get(position).getProject_name());
+            TextAllScreenModel textAllScreenModel = new TextAllScreenModel();
+
+            textAllScreenModel.setImage(projectsModel.getApp_icon());
+            textAllScreenModel.setTitle(projectsModel.getProject_name());
+            textAllScreenModel.setDescription(projectsModel.getDescription());
+
+            Intent i = new Intent(getActivity(), TextAllScreenActivity.class);
+            i.putExtra(Constants.PutExtra_Keys.textAllScreen, textAllScreenModel);
+            startActivity(i);
+
         }
 
 
