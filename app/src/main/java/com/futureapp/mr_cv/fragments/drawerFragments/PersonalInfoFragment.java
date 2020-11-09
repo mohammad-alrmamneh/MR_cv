@@ -1,9 +1,13 @@
 package com.futureapp.mr_cv.fragments.drawerFragments;
 
+import android.Manifest;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +25,7 @@ import com.futureapp.mr_cv.util.Global;
 
 import java.util.ArrayList;
 
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -54,6 +59,8 @@ public class PersonalInfoFragment extends Fragment implements AdapterView.OnItem
     private ClipboardManager myClipboard;
     private ClipData myClip;
 
+    String mobileNumber = "";
+
     public static PersonalInfoFragment newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
@@ -77,7 +84,7 @@ public class PersonalInfoFragment extends Fragment implements AdapterView.OnItem
 
         setData(Global.configFirebaseModel.getPersonalInfo_2_models());
 
-        binding.profilePicFl.setOnClickListener(new View.OnClickListener() {
+        binding.profilePicCIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -146,9 +153,45 @@ public class PersonalInfoFragment extends Fragment implements AdapterView.OnItem
 
         } else if (personalInfo_2_model.getTag().equalsIgnoreCase(getResources().getString(R.string.mobileTag))) {
 
-            Global.callPhone(getActivity(), personalInfo_2_model.getValue());
+            mobileNumber = personalInfo_2_model.getValue();
+
+            if (isPermissionGranted()) {
+
+                Global.callPhone(getActivity(), mobileNumber);
+
+            }
 
         }
 
     }
+
+    public boolean isPermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.CALL_PHONE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v("TAG", "Permission is granted");
+                return true;
+            } else {
+
+                Log.v("TAG", "Permission is revoked");
+                requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, Constants.Request_code.CALL_PHONE);
+                return false;
+            }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("TAG", "Permission is granted");
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == Constants.Request_code.CALL_PHONE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Global.callPhone(getActivity(), mobileNumber);
+            } else {
+            }
+        }
+    }
+
 }

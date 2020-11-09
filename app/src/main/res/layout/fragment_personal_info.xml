@@ -21,16 +21,23 @@
             <FrameLayout
                 android:id="@+id/profilePic_Fl"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_circle_profile_pic_border"
-                android:padding="@dimen/_1sdp">
+                android:layout_height="wrap_content">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profilePic_CIV"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:layout_gravity="center"
-                    android:src="@color/gray" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_circle_profile_pic_border"
+                    android:padding="@dimen/_1sdp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profilePic_CIV"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_gravity="center"
+                        android:src="@color/gray" />
+
+                </FrameLayout>
+
 
             </FrameLayout>
 

@@ -13,6 +13,24 @@ public class TextAllScreenModel implements Parcelable {
 
     }
 
+    protected TextAllScreenModel(Parcel in) {
+        image = in.readString();
+        title = in.readString();
+        description = in.readString();
+    }
+
+    public static final Creator<TextAllScreenModel> CREATOR = new Creator<TextAllScreenModel>() {
+        @Override
+        public TextAllScreenModel createFromParcel(Parcel in) {
+            return new TextAllScreenModel(in);
+        }
+
+        @Override
+        public TextAllScreenModel[] newArray(int size) {
+            return new TextAllScreenModel[size];
+        }
+    };
+
     public String getImage() {
         return image;
     }
@@ -44,6 +62,8 @@ public class TextAllScreenModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-
+        parcel.writeString(image);
+        parcel.writeString(title);
+        parcel.writeString(description);
     }
 }

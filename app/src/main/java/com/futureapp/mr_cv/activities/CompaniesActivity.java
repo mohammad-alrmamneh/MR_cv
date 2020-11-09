@@ -29,6 +29,8 @@ public class CompaniesActivity extends AppCompatActivity implements AdapterView.
 
     RecycleViewCompaniesAdapter recycleViewCompaniesAdapter;
 
+    ArrayList<CompaniesModel> justCompanies;
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
@@ -47,7 +49,7 @@ public class CompaniesActivity extends AppCompatActivity implements AdapterView.
 
     private void setData(ArrayList<CompaniesModel> companiesModels) {
 
-        ArrayList<CompaniesModel> justCompanies = new ArrayList<>();//add just companies without freelance
+        justCompanies = new ArrayList<>();//add just companies without freelance
 
         for (int i = 0; i < companiesModels.size(); i++) {
             if (!companiesModels.get(i).getCompany_name().equalsIgnoreCase(getResources().getString(R.string.freelance))) {
@@ -77,7 +79,7 @@ public class CompaniesActivity extends AppCompatActivity implements AdapterView.
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-        CompaniesModel companiesModel = Global.configFirebaseModel.getCompaniesModel().get(position);
+        CompaniesModel companiesModel = justCompanies.get(position);
 
         int companyWebsite_Tv_ID = R.id.companyWebsite_Tv;
 

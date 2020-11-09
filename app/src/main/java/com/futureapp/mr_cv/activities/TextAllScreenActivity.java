@@ -46,9 +46,9 @@ public class TextAllScreenActivity extends AppCompatActivity {
                         .load(textAllScreenModel.getImage())
                         .placeholder(R.color.main_app_black_2)
                         .error(R.color.main_app_black_2)
-                        .into(binding.imageIv);
+                        .into(binding.imageCIV);
             } else {
-                binding.imageIv.setVisibility(View.GONE);
+                binding.imageFl.setVisibility(View.GONE);
             }
 
             binding.titleTv.setText(textAllScreenModel.getTitle());

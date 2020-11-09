@@ -34,6 +34,7 @@ public class RecycleViewCompaniesAdapter extends
             super(binding.getRoot());
             this.binding = binding;
 
+            binding.companyWebsiteTv.setOnClickListener(this);
             binding.itemRowLL.setOnClickListener(this);
 
         }
